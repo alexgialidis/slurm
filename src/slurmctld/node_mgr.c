@@ -3824,6 +3824,7 @@ static void _make_node_down(struct node_record *node_ptr, time_t event_time)
 	xassert(node_ptr);
 	node_flags = node_ptr->node_state & NODE_STATE_FLAGS;
 	node_flags &= (~NODE_STATE_COMPLETING);
+	node_flags &= (~NODE_STATE_POWER_UP);
 	node_ptr->node_state = NODE_STATE_DOWN | node_flags;
 	node_ptr->owner = NO_VAL;
 	xfree(node_ptr->mcs_label);
