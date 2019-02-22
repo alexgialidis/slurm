@@ -429,7 +429,7 @@ extern void allocate_nodes(struct job_record *job_ptr)
 
 	if (has_cloud) {
 		if (has_cloud_power_save) {
-			job_ptr->alias_list = xstrdup("TBD");
+			//job_ptr->alias_list = xstrdup("TBD");
 			job_ptr->wait_all_nodes = 1;
 		} else
 			set_job_alias_list(job_ptr);
@@ -443,6 +443,8 @@ extern void set_job_alias_list(struct job_record *job_ptr)
 {
 	int i;
 	struct node_record *node_ptr;
+
+	return;
 
 	xfree(job_ptr->alias_list);
 	for (i = 0, node_ptr = node_record_table_ptr; i < node_record_count;
