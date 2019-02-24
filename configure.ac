@@ -596,6 +596,7 @@ AC_CONFIG_FILES([Makefile
 		 src/plugins/route/default/Makefile
 		 src/plugins/route/topology/Makefile
 		 src/plugins/sched/Makefile
+		 src/plugins/sched/alex/Makefile
 		 src/plugins/sched/backfill/Makefile
 		 src/plugins/sched/builtin/Makefile
 		 src/plugins/sched/hold/Makefile

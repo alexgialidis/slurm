@@ -14,7 +14,7 @@
 
 @SET_MAKE@
 
-# Makefile for builtin scheduler plugin
+# Makefile for alex scheduler plugin
 
 VPATH = @srcdir@
 am__is_gnu_make = { \
@@ -91,7 +91,7 @@ POST_UNINSTALL = :
 build_triplet = @build@
 host_triplet = @host@
 target_triplet = @target@
-subdir = src/plugins/sched/builtin
+subdir = src/plugins/sched/alex
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
 am__aclocal_m4_deps = $(top_srcdir)/auxdir/ax_check_compile_flag.m4 \
 	$(top_srcdir)/auxdir/ax_check_zlib.m4 \
@@ -177,17 +177,16 @@ am__uninstall_files_from_dir = { \
   }
 am__installdirs = "$(DESTDIR)$(pkglibdir)"
 LTLIBRARIES = $(pkglib_LTLIBRARIES)
-sched_builtin_la_LIBADD =
-am_sched_builtin_la_OBJECTS = builtin_wrapper.lo builtin.lo
-sched_builtin_la_OBJECTS = $(am_sched_builtin_la_OBJECTS)
+sched_alex_la_LIBADD =
+am_sched_alex_la_OBJECTS = alex_wrapper.lo alex.lo
+sched_alex_la_OBJECTS = $(am_sched_alex_la_OBJECTS)
 AM_V_lt = $(am__v_lt_@AM_V@)
 am__v_lt_ = $(am__v_lt_@AM_DEFAULT_V@)
 am__v_lt_0 = --silent
 am__v_lt_1 = 
-sched_builtin_la_LINK = $(LIBTOOL) $(AM_V_lt) --tag=CC \
-	$(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=link $(CCLD) \
-	$(AM_CFLAGS) $(CFLAGS) $(sched_builtin_la_LDFLAGS) $(LDFLAGS) \
-	-o $@
+sched_alex_la_LINK = $(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) \
+	$(LIBTOOLFLAGS) --mode=link $(CCLD) $(AM_CFLAGS) $(CFLAGS) \
+	$(sched_alex_la_LDFLAGS) $(LDFLAGS) -o $@
 AM_V_P = $(am__v_P_@AM_V@)
 am__v_P_ = $(am__v_P_@AM_DEFAULT_V@)
 am__v_P_0 = false
@@ -222,8 +221,8 @@ AM_V_CCLD = $(am__v_CCLD_@AM_V@)
 am__v_CCLD_ = $(am__v_CCLD_@AM_DEFAULT_V@)
 am__v_CCLD_0 = @echo "  CCLD    " $@;
 am__v_CCLD_1 = 
-SOURCES = $(sched_builtin_la_SOURCES)
-DIST_SOURCES = $(sched_builtin_la_SOURCES)
+SOURCES = $(sched_alex_la_SOURCES)
+DIST_SOURCES = $(sched_alex_la_SOURCES)
 am__can_run_installinfo = \
   case $$AM_UPDATE_INFO_DIR in \
     n|no|NO) false;; \
@@ -514,13 +513,13 @@ AUTOMAKE_OPTIONS = foreign
 AM_CXXFLAGS = -fexceptions
 PLUGIN_FLAGS = -module -avoid-version --export-dynamic
 AM_CPPFLAGS = -I$(top_srcdir) -I$(top_srcdir)/src/common
-pkglib_LTLIBRARIES = sched_builtin.la
-sched_builtin_la_SOURCES = \
-			builtin_wrapper.c \
-			builtin.c	\
-			builtin.h
+pkglib_LTLIBRARIES = sched_alex.la
+sched_alex_la_SOURCES = \
+			alex_wrapper.c \
+			alex.c	\
+			alex.h
 
-sched_builtin_la_LDFLAGS = $(PLUGIN_FLAGS)
+sched_alex_la_LDFLAGS = $(PLUGIN_FLAGS)
 all: all-am
 
 .SUFFIXES:
@@ -534,9 +533,9 @@ $(srcdir)/Makefile.in: @MAINTAINER_MODE_TRUE@ $(srcdir)/Makefile.am  $(am__confi
 	      exit 1;; \
 	  esac; \
 	done; \
-	echo ' cd $(top_srcdir) && $(AUTOMAKE) --foreign src/plugins/sched/builtin/Makefile'; \
+	echo ' cd $(top_srcdir) && $(AUTOMAKE) --foreign src/plugins/sched/alex/Makefile'; \
 	$(am__cd) $(top_srcdir) && \
-	  $(AUTOMAKE) --foreign src/plugins/sched/builtin/Makefile
+	  $(AUTOMAKE) --foreign src/plugins/sched/alex/Makefile
 Makefile: $(srcdir)/Makefile.in $(top_builddir)/config.status
 	@case '$?' in \
 	  *config.status*) \
@@ -590,8 +589,8 @@ clean-pkglibLTLIBRARIES:
 	  rm -f $${locs}; \
 	}
 
-sched_builtin.la: $(sched_builtin_la_OBJECTS) $(sched_builtin_la_DEPENDENCIES) $(EXTRA_sched_builtin_la_DEPENDENCIES) 
-	$(AM_V_CCLD)$(sched_builtin_la_LINK) -rpath $(pkglibdir) $(sched_builtin_la_OBJECTS) $(sched_builtin_la_LIBADD) $(LIBS)
+sched_alex.la: $(sched_alex_la_OBJECTS) $(sched_alex_la_DEPENDENCIES) $(EXTRA_sched_alex_la_DEPENDENCIES) 
+	$(AM_V_CCLD)$(sched_alex_la_LINK) -rpath $(pkglibdir) $(sched_alex_la_OBJECTS) $(sched_alex_la_LIBADD) $(LIBS)
 
 mostlyclean-compile:
 	-rm -f *.$(OBJEXT)
@@ -599,8 +598,8 @@ mostlyclean-compile:
 distclean-compile:
 	-rm -f *.tab.c
 
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/builtin.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/builtin_wrapper.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/alex.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/alex_wrapper.Plo@am__quote@
 
 .c.o:
 @am__fastdepCC_TRUE@	$(AM_V_CC)$(COMPILE) -MT $@ -MD -MP -MF $(DEPDIR)/$*.Tpo -c -o $@ $<
